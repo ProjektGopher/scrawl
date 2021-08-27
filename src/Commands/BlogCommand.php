@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace Projektgopher\Blog\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class BlogCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'laravel-blog';
 
     public $description = 'My command';
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace VendorName\Skeleton\Tests;
+namespace Projektgopher\Blog\Tests;
 
 class ExampleTest extends TestCase
 {
