@@ -4,7 +4,7 @@ namespace Projektgopher\Blog;
 
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Projektgopher\Blog\Commands\BlogCommand;
+use Projektgopher\Blog\Commands\MakeCommand;
 
 class BlogServiceProvider extends PackageServiceProvider
 {
@@ -19,7 +19,7 @@ class BlogServiceProvider extends PackageServiceProvider
             ->name('laravel-blog')
             ->hasConfigFile()
             ->hasViews()
-            ->hasMigration('create_laravel-blog_table')
-            ->hasCommand(BlogCommand::class);
+            // ->hasRoute()
+            ->hasCommand(MakeCommand::class);
     }
 }
