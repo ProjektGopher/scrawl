@@ -2,9 +2,9 @@
 
 namespace Projektgopher\Blog;
 
+use Projektgopher\Blog\Commands\MakeCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Projektgopher\Blog\Commands\MakeCommand;
 
 class BlogServiceProvider extends PackageServiceProvider
 {
