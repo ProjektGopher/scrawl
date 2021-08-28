@@ -2,10 +2,10 @@
 
 namespace Projektgopher\Blog\Tests;
 
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
-use Illuminate\Support\Arr;
 
 class MakeCommandTest extends TestCase
 {
