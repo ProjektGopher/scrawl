@@ -19,7 +19,9 @@ class BlogServiceProvider extends PackageServiceProvider
             ->name('laravel-blog')
             ->hasConfigFile()
             ->hasViews()
-            // ->hasRoute()
-            ->hasCommand(MakeCommand::class);
+            ->hasRoute('web')
+            ->hasCommands([
+                MakeCommand::class,
+            ]);
     }
 }

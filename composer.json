@@ -4,7 +4,8 @@
     "keywords": [
         "ProjektGopher",
         "laravel",
-        "laravel-blog"
+        "laravel-blog",
+        "blog"
     ],
     "homepage": "https://github.com/projektgopher/laravel-blog",
     "license": "MIT",
@@ -30,8 +31,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Projektgopher\\Blog\\": "src",
-            "Projektgopher\\Blog\\Database\\Factories\\": "database/factories"
+            "Projektgopher\\Blog\\": "src"
         }
     },
     "autoload-dev": {
