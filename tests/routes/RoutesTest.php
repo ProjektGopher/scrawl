@@ -4,7 +4,6 @@ namespace Projektgopher\Blog\Tests;
 
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Arr;
 
 class RoutesTest extends TestCase
 {
@@ -16,7 +15,9 @@ class RoutesTest extends TestCase
     /** @test */
     public function it_registers_a_blog_post_route()
     {
-        $this->assertNotFalse(array_search('blog/{slug}', collect(Route::getRoutes())->map(function ($route) { return $route->uri(); })->toArray()));
+        $this->assertNotFalse(array_search('blog/{slug}', collect(Route::getRoutes())->map(function ($route) {
+            return $route->uri();
+        })->toArray()));
     }
 
     /** @test */
