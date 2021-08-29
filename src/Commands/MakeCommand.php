@@ -22,6 +22,15 @@ class MakeCommand extends Command
 
         File::ensureDirectoryExists($this->directory);
 
+        if(File::exists("{$this->directory}/{$title}.md"))
+        {
+            $this->info('This file already exists. Try a different name.');
+            $title = $this->ask('What is the name of your blog post?');
+            $title = Str::slug($title);
+            // extract this into a function that can call itself again.
+        }
+
+        // try/catch creating file from stub
         $this->comment('All done. Now get writing ;)');
     }
 }

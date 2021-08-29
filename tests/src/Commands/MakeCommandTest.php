@@ -9,12 +9,13 @@ use Illuminate\Support\Arr;
 
 class MakeCommandTest extends TestCase
 {
-    public $files;
+    public $files = [];
 
     public function setUp(): void
     {
         parent::setUp();
-        $this->files = File::shouldReceive('ensureDirectoryExists');
+        $this->files['ensureDirectoryExists'] = File::shouldReceive('ensureDirectoryExists');
+        $this->files['exists'] = File::shouldReceive('exists');
     }
 
     /** @test */
@@ -43,15 +44,31 @@ class MakeCommandTest extends TestCase
     }
 
     /** @test */
-    public function it_creates_the_unpublished_blog_directory_if_none_exists()
+    public function it_creates_the_unpublished_directory_if_none_exists()
     {
-        $this->files
+        $this->files['ensureDirectoryExists']
             ->with('resources/blogs/unpublished')
             ->once();
 
         $this->artisan('blog:make test');
     }
 
-    // check for .md file with same name as slug, prompt if exists
+    /** @test */
+    public function it_checks_for_existing_unpublished_markdown_file()
+    {
+        $name = "Long title that should be sluggified";
+        $slug = Str::slug($name);
+
+        $this->files['exists']
+            ->with("resources/blogs/unpublished/{$slug}.md")
+            ->once()
+            ->andReturn(true);
+
+        $this->artisan("blog:make '{$name}'")
+            ->expectsOutput('This file already exists. Try a different name.')
+            ->expectsQuestion('What is the name of your blog post?', $name);
+    }
+
+    // check for .md file with same name as slug, prompt if exists (published also, could be problem later)
     // create .md file with slug name, using stub
 }
