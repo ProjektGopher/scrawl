@@ -35,5 +35,4 @@ class RoutesTest extends TestCase
 
     // it has named routes
     // it lists published blogs
-
 }
