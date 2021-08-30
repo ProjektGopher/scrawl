@@ -3,6 +3,8 @@
 namespace Projektgopher\Blog;
 
 use Projektgopher\Blog\Commands\MakeCommand;
+use Projektgopher\Blog\Commands\PublishCommand;
+use Projektgopher\Blog\Commands\UnpublishCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -20,8 +22,12 @@ class BlogServiceProvider extends PackageServiceProvider
             ->hasConfigFile()
             ->hasViews()
             ->hasRoute('web')
-            ->hasCommands([
+            ->hasCommands(
+                [
                 MakeCommand::class,
-            ]);
+                PublishCommand::class,
+                UnpublishCommand::class,
+                ]
+            );
     }
 }
