@@ -12,6 +12,5 @@ class PublishCommand extends Command
 
     public function handle(): void
     {
-
     }
 }

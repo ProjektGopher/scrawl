@@ -12,6 +12,5 @@ class UnpublishCommand extends Command
 
     public function handle(): void
     {
-
     }
 }
