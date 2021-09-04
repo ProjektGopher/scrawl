@@ -9,15 +9,6 @@ use Illuminate\Support\Str;
 
 class MakeCommandTest extends TestCase
 {
-    public $files = [];
-
-    public function setUp(): void
-    {
-        parent::setUp();
-        $this->files['ensureDirectoryExists'] = File::shouldReceive('ensureDirectoryExists');
-        $this->files['exists'] = File::shouldReceive('exists');
-    }
-
     /** @test */
     public function it_has_a_make_command()
     {
@@ -27,6 +18,8 @@ class MakeCommandTest extends TestCase
     /** @test */
     public function it_sluggifies_a_title()
     {
+        File::spy();
+
         $title = 'Long blog title that has to be sluggified';
 
         $this->artisan('blog:make')
@@ -37,6 +30,8 @@ class MakeCommandTest extends TestCase
     /** @test */
     public function it_accepts_a_title_argument()
     {
+        File::spy();
+
         $title = 'Long blog title that has to be sluggified';
 
         $this->artisan("blog:make '{$title}'")
@@ -46,11 +41,13 @@ class MakeCommandTest extends TestCase
     /** @test */
     public function it_creates_the_unpublished_directory_if_none_exists()
     {
-        $this->files['ensureDirectoryExists']
-            ->with('resources/blogs/unpublished')
-            ->once();
+        File::spy();
 
         $this->artisan('blog:make test');
+
+        File::shouldHaveReceived('ensureDirectoryExists')
+            ->once()
+            ->with('resources/blogs/unpublished');
     }
 
     /** @test */
@@ -59,9 +56,10 @@ class MakeCommandTest extends TestCase
         $name = "Long title that should be sluggified";
         $slug = Str::slug($name);
 
-        $this->files['exists']
-            ->with("resources/blogs/unpublished/{$slug}.md")
+        File::shouldReceive('ensureDirectoryExists');
+        File::shouldReceive('exists')
             ->once()
+            ->with("resources/blogs/unpublished/{$slug}.md")
             ->andReturn(true);
 
         $this->artisan("blog:make '{$name}'")
