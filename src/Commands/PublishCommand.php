@@ -24,13 +24,15 @@ class PublishCommand extends Command
 
         File::ensureDirectoryExists($this->publishedDirectory);
 
-        if (!File::exists("{$this->unpublishedDirectory}/{$title}.md")) {
+        if (! File::exists("{$this->unpublishedDirectory}/{$title}.md")) {
             $this->warn("We couldn't find this file. Try again with a different name.");
+
             return;
         }
 
         if (File::exists("{$this->publishedDirectory}/{$title}.md")) {
             $this->warn('This file already exists. Try again with a different name.');
+
             return;
         }
 

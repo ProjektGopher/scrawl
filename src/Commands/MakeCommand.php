@@ -24,6 +24,7 @@ class MakeCommand extends Command
 
         if (File::exists("{$this->directory}/{$title}.md")) {
             $this->warn('This file already exists. Try again with a different name.');
+
             return;
         }
 
