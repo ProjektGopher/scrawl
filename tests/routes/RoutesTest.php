@@ -7,11 +7,6 @@ use Illuminate\Support\Facades\Route;
 
 class RoutesTest extends TestCase
 {
-    public function setUp(): void
-    {
-        parent::setUp();
-    }
-
     /** @test */
     public function it_registers_a_blog_post_route()
     {
