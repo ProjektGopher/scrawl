@@ -1,4 +1,6 @@
 # Scrawl
+verb. To write in a hurried or careless way.
+
 ## Just get writing.
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/projektgopher/laravel-blog.svg?style=flat-square)](https://packagist.org/packages/projektgopher/laravel-blog)
@@ -6,7 +8,7 @@
 [![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/projektgopher/laravel-blog/Check%20&%20fix%20styling?label=code%20style)](https://github.com/projektgopher/laravel-blog/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/projektgopher/laravel-blog.svg?style=flat-square)](https://packagist.org/packages/projektgopher/laravel-blog)
 
-This is designed to be the lowest barrier to entry markdown file based single user blogging solution for Laravel
+Scrawl is designed to be the lowest barrier to entry markdown file based single user blogging solution for Laravel
 
 ## Support us
 
@@ -41,9 +43,22 @@ return [
 
 ## Usage
 
+Scrawl is desgined to be used on the CLI. It will automatically
+register the blog routes, and requires no database as this
+package is file based, and meant to have your content
+comitted to the project. Only posts saved in the
+'published' directory will be publicly accessible.
+
 ```bash
 php artisan blog:make 'long title that should be sluggified'
 ```
+This command will ensure that the unpublished directory exists,
+copy the .md blog post stub into the 'unpublished' directory
+with a sluggified title.
+
+Now you can just get into writing your post in github flavored
+markdown without worrying about all the details.
+
 
 ```bash
 php artisan blog:publish 'name of blog you would like to move to the published directory'
