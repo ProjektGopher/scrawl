@@ -1,10 +1,10 @@
 <?php
 
-namespace Projektgopher\Blog;
+namespace Projektgopher\Scrawl;
 
-use Projektgopher\Blog\Commands\MakeCommand;
-use Projektgopher\Blog\Commands\PublishCommand;
-use Projektgopher\Blog\Commands\UnpublishCommand;
+use Projektgopher\Scrawl\Commands\MakeCommand;
+use Projektgopher\Scrawl\Commands\PublishCommand;
+use Projektgopher\Scrawl\Commands\UnpublishCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -18,7 +18,7 @@ class BlogServiceProvider extends PackageServiceProvider
          * More info: https://github.com/spatie/laravel-package-tools
          */
         $package
-            ->name('laravel-blog')
+            ->name('scrawl')
             ->hasConfigFile()
             ->hasViews()
             ->hasRoute('web')

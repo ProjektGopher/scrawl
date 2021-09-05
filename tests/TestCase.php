@@ -1,9 +1,9 @@
 <?php
 
-namespace Projektgopher\Blog\Tests;
+namespace Projektgopher\Scrawl\Tests;
 
 use Orchestra\Testbench\TestCase as Orchestra;
-use Projektgopher\Blog\BlogServiceProvider;
+use Projektgopher\Scrawl\BlogServiceProvider;
 
 class TestCase extends Orchestra
 {

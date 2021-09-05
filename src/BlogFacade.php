@@ -1,16 +1,16 @@
 <?php
 
-namespace Projektgopher\Blog;
+namespace Projektgopher\Scrawl;
 
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @see \Projektgopher\Blog\Blog
+ * @see \Projektgopher\Scrawl\Blog
  */
 class BlogFacade extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return 'laravel-blog';
+        return 'scrawl';
     }
 }

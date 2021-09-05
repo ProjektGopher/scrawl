@@ -1,11 +1,11 @@
 <?php
 
-namespace Projektgopher\Blog\Commands;
+namespace Projektgopher\Scrawl\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
-use Projektgopher\Blog\Blog;
+use Projektgopher\Scrawl\Blog;
 
 class MakeCommand extends Command
 {

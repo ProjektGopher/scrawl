@@ -1,13 +1,15 @@
 {
-    "name": "projektgopher/laravel-blog",
+    "name": "projektgopher/scrawl",
     "description": "Lowest barrier to entry blogging solution for Laravel",
     "keywords": [
         "ProjektGopher",
         "laravel",
         "laravel-blog",
-        "blog"
+        "blog",
+        "scrawl",
+        "markdown"
     ],
-    "homepage": "https://github.com/projektgopher/laravel-blog",
+    "homepage": "https://github.com/projektgopher/scrawl",
     "license": "MIT",
     "authors": [
         {
@@ -33,12 +35,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Projektgopher\\Blog\\": "src"
+            "Projektgopher\\Scrawl\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Projektgopher\\Blog\\Tests\\": "tests"
+            "Projektgopher\\Scrawl\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -52,10 +54,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Projektgopher\\Blog\\BlogServiceProvider"
+                "Projektgopher\\Scrawl\\BlogServiceProvider"
             ],
             "aliases": {
-                "Blog": "Projektgopher\\Blog\\BlogFacade"
+                "Blog": "Projektgopher\\Scrawl\\BlogFacade"
             }
         }
     },

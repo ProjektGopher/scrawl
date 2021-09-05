@@ -1,5 +1,5 @@
 <?php
-// config for Projektgopher/Blog
+// config for Projektgopher/Scrawl
 return [
 
     // published directory

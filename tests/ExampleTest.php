@@ -1,6 +1,6 @@
 <?php
 
-namespace Projektgopher\Blog\Tests;
+namespace Projektgopher\Scrawl\Tests;
 
 class ExampleTest extends TestCase
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Projektgopher\Blog;
+namespace Projektgopher\Scrawl;
 
 use Illuminate\Support\Facades\File;
 use League\CommonMark\GithubFlavoredMarkdownConverter;

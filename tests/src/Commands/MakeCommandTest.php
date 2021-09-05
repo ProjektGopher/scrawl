@@ -1,6 +1,6 @@
 <?php
 
-namespace Projektgopher\Blog\Tests;
+namespace Projektgopher\Scrawl\Tests;
 
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Artisan;
