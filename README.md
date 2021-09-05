@@ -20,7 +20,7 @@ composer require projektgopher/laravel-blog
 
 You can publish the config file with:
 ```bash
-php artisan vendor:publish --provider="Projektgopher\Blog\BlogServiceProvider" --tag="laravel-blog-config"
+php artisan vendor:publish --provider="Projektgopher\Scrawl\BlogServiceProvider" --tag="scrawl-config"
 ```
 
 This is the contents of the published config file:
