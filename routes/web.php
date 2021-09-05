@@ -2,7 +2,7 @@
 
 namespace Projektgopher\Blog\Routes;
 
-use Illuminate\support\Facades\Route;
+use Illuminate\Support\Facades\Route;
 use Projektgopher\Blog\Blog;
 
 Route::get('blog/{slug}', function ($slug) {
