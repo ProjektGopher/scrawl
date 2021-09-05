@@ -1,11 +1,12 @@
-# Lowest barrier to entry blogging solution for Laravel
+# Scrawl
+## Just get writing.
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/projektgopher/laravel-blog.svg?style=flat-square)](https://packagist.org/packages/projektgopher/laravel-blog)
 [![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/projektgopher/laravel-blog/run-tests?label=tests)](https://github.com/projektgopher/laravel-blog/actions?query=workflow%3Arun-tests+branch%3Amain)
 [![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/projektgopher/laravel-blog/Check%20&%20fix%20styling?label=code%20style)](https://github.com/projektgopher/laravel-blog/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/projektgopher/laravel-blog.svg?style=flat-square)](https://packagist.org/packages/projektgopher/laravel-blog)
 
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
+This is designed to be the lowest barrier to entry markdown file based single user blogging solution for Laravel
 
 ## Support us
 
@@ -32,21 +33,30 @@ This is the contents of the published config file:
 
 ```php
 return [
+    // publishedDirectory
+    // unpublishedDirectory
+    // route group
 ];
 ```
 
 ## Usage
 
-```php
-$slug = 'testing';
-$blog = new Projektgopher\Blog($slug);
-echo $blog->body;
+```bash
+php artisan blog:make 'long title that should be sluggified'
+```
+
+```bash
+php artisan blog:publish 'name of blog you would like to move to the published directory'
+```
+
+```bash
+php artisan blog:unpublish 'name of the blog you should not have published yet'
 ```
 
 ## Testing
 
 ```bash
-composer test
+vendor/bin/phpunit --testdox
 ```
 
 ## Changelog
