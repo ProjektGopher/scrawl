@@ -29,7 +29,7 @@ class MakeCommand extends Command
             return;
         }
 
-        $stub = File::get('stubs/blog.md.stub');
+        $stub = File::get('vendor/projektgopher/scrawl/stubs/blog.md.stub');
 
         // try/catch creating file from stub
         File::put(Blog::$unpublishedDirectory . "/{$slug}.md", $stub);

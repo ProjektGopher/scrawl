@@ -79,7 +79,7 @@ class MakeCommandTest extends TestCase
             ->andReturn(false);
         File::shouldReceive('get')
             ->once()
-            ->with('stubs/blog.md.stub')
+            ->with('vendor/projektgopher/scrawl/stubs/blog.md.stub')
             ->andReturn('stub');
         File::shouldReceive('put')
             ->once()
