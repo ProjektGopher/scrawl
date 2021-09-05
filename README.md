@@ -15,7 +15,7 @@ Scrawl is designed to be the lowest barrier to entry markdown file based single 
 You can install the package via composer:
 
 ```bash
-composer require projektgopher/laravel-blog
+composer require projektgopher/scrawl
 ```
 
 You can publish the config file with:
