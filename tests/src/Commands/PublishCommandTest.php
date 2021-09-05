@@ -80,7 +80,7 @@ class PublishCommandTest extends TestCase
                 "resources/blogs/published/{$slug}.md"
             );
 
-        $this->artisan("blog:publish '{$name}'");
-            // ->expectsOutput("All done. Don't forget to commit, push, and deploy ;)");
+        $this->artisan("blog:publish '{$name}'")
+            ->expectsOutput("All done. Don't forget to commit, push, and deploy ;)");
     }
 }

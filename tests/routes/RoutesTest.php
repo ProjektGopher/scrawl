@@ -23,14 +23,22 @@ class RoutesTest extends TestCase
     /** @test */
     public function it_returns_a_200_if_the_blog_exists()
     {
-        File::shouldReceive('exists')->with('resources/blogs/published/test.md')->once()->andReturn(true);
-        $this->get('/blog/test')->assertOk();
+        File::shouldReceive('exists')
+            ->once()
+            ->with('resources/blogs/published/test.md')
+            ->andReturn(true);
+
+            $this->get('/blog/test')->assertOk();
     }
 
     /** @test */
     public function it_returns_a_404_if_the_blog_does_not_exist()
     {
-        File::shouldReceive('exists')->with('resources/blogs/published/does-not-exist.md')->once()->andReturn(false);
+        File::shouldReceive('exists')
+            ->once()
+            ->with('resources/blogs/published/does-not-exist.md')
+            ->andReturn(false);
+
         $this->get('/blog/does-not-exist')->assertStatus(404);
     }
 
