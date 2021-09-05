@@ -24,7 +24,7 @@ class Blog
             ]
         );
 
-        return $converter->convertToHtml(
+        return (string) $converter->convertToHtml(
             File::get(self::$publishedDirectory . "/{$slug}.md")
         );
     }
