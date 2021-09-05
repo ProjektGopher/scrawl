@@ -28,7 +28,7 @@ class RoutesTest extends TestCase
             ->with('resources/blogs/published/test.md')
             ->andReturn(true);
 
-            $this->get('/blog/test')->assertOk();
+        $this->get('/blog/test')->assertOk();
     }
 
     /** @test */
