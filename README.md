@@ -3,10 +3,10 @@ verb. To write in a hurried or careless way.
 
 ## Just get writing.
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/projektgopher/laravel-blog.svg?style=flat-square)](https://packagist.org/packages/projektgopher/laravel-blog)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/projektgopher/laravel-blog/run-tests?label=tests)](https://github.com/projektgopher/laravel-blog/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/projektgopher/laravel-blog/Check%20&%20fix%20styling?label=code%20style)](https://github.com/projektgopher/laravel-blog/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
-[![Total Downloads](https://img.shields.io/packagist/dt/projektgopher/laravel-blog.svg?style=flat-square)](https://packagist.org/packages/projektgopher/laravel-blog)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/projektgopher/scrawl.svg?style=flat-square)](https://packagist.org/packages/projektgopher/scrawl)
+[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/projektgopher/scrawl/run-tests?label=tests)](https://github.com/projektgopher/scrawl/actions?query=workflow%3Arun-tests+branch%3Amain)
+[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/projektgopher/scrawl/Check%20&%20fix%20styling?label=code%20style)](https://github.com/projektgopher/scrawl/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
+[![Total Downloads](https://img.shields.io/packagist/dt/projektgopher/scrawl.svg?style=flat-square)](https://packagist.org/packages/projektgopher/scrawl)
 
 Scrawl is designed to be the lowest barrier to entry markdown file based single user blogging solution for Laravel
 
