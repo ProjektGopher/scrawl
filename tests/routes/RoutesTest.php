@@ -27,6 +27,10 @@ class RoutesTest extends TestCase
             ->once()
             ->with('resources/blogs/published/test.md')
             ->andReturn(true);
+        File::shouldReceive('get')
+            ->once()
+            ->with('resources/blogs/published/test.md')
+            ->andReturn('test');
 
         $this->get('/blog/test')->assertOk();
     }
@@ -40,6 +44,23 @@ class RoutesTest extends TestCase
             ->andReturn(false);
 
         $this->get('/blog/does-not-exist')->assertStatus(404);
+    }
+
+    /** @test */
+    public function it_converts_md_to_html()
+    {
+        File::shouldReceive('exists')
+            ->once()
+            ->with('resources/blogs/published/published-post.md')
+            ->andReturn(true);
+        File::shouldReceive('get')
+            ->once()
+            ->with('resources/blogs/published/published-post.md')
+            ->andReturn('# Hello World!');
+
+        $this->get('/blog/published-post')
+            ->assertOk()
+            ->assertSee(value: '<h1>Hello World!</h1>', escape: false);
     }
 
     // it has named routes
