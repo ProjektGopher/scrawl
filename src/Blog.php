@@ -10,7 +10,7 @@ class Blog
     public static $publishedDirectory = "resources/blogs/published";
     public static $unpublishedDirectory = "resources/blogs/unpublished";
 
-    public static function exists($slug): bool
+    public static function published($slug): bool
     {
         return File::exists(self::$publishedDirectory . "/{$slug}.md");
     }

@@ -15,14 +15,16 @@ class PublishCommand extends Command
 
     public function handle(): void
     {
-        $title = $this->argument('title')
-            ?? $this->ask('What is the name of your blog post?');
-        $title = Str::slug($title);
-        $this->comment($title);
+        $slug = Str::slug(
+            $this->argument('title')
+                ?? $this->ask('What is the name of your blog post?')
+        );
+
+        $this->comment($slug);
 
         File::ensureDirectoryExists(Blog::$publishedDirectory);
 
-        if (! File::exists(Blog::$unpublishedDirectory . "/{$title}.md")) {
+        if (File::missing(Blog::$unpublishedDirectory . "/{$slug}.md")) {
             $this->warn(
                 "We couldn't find this file. Try again with a different name."
             );
@@ -30,7 +32,7 @@ class PublishCommand extends Command
             return;
         }
 
-        if (File::exists(Blog::$publishedDirectory . "/{$title}.md")) {
+        if (File::exists(Blog::$publishedDirectory . "/{$slug}.md")) {
             $this->warn(
                 'This file already exists. Try again with a different name.'
             );
@@ -38,11 +40,11 @@ class PublishCommand extends Command
             return;
         }
 
-        // try/catch moving markdown file
         File::move(
-            Blog::$unpublishedDirectory . "/{$title}.md",
-            Blog::$publishedDirectory . "/{$title}.md"
+            Blog::$unpublishedDirectory . "/{$slug}.md",
+            Blog::$publishedDirectory . "/{$slug}.md"
         );
+
         $this->comment("All done. Don't forget to commit, push, and deploy ;)");
     }
 }

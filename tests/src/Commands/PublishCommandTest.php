@@ -45,10 +45,10 @@ class PublishCommandTest extends TestCase
         $slug = Str::slug($name);
 
         File::shouldReceive('ensureDirectoryExists');
-        File::shouldReceive('exists')
+        File::shouldReceive('missing')
             ->once()
             ->with("resources/blogs/unpublished/{$slug}.md")
-            ->andReturn(true);
+            ->andReturn(false);
         File::shouldReceive('exists')
             ->with("resources/blogs/published/{$slug}.md")
             ->once()
@@ -65,10 +65,10 @@ class PublishCommandTest extends TestCase
         $slug = Str::slug($name);
 
         File::shouldReceive('ensureDirectoryExists');
-        File::shouldReceive('exists')
+        File::shouldReceive('missing')
             ->once()
             ->with("resources/blogs/unpublished/{$slug}.md")
-            ->andReturn(true);
+            ->andReturn(false);
         File::shouldReceive('exists')
             ->once()
             ->with("resources/blogs/published/{$slug}.md")
