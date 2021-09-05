@@ -2,8 +2,8 @@
 
 namespace Projektgopher\Blog;
 
-use League\CommonMark\GithubFlavoredMarkdownConverter;
 use Illuminate\Support\Facades\File;
+use League\CommonMark\GithubFlavoredMarkdownConverter;
 
 class Blog
 {
@@ -12,7 +12,7 @@ class Blog
 
     public static function exists($slug): bool
     {
-        return File::exists(SELF::$publishedDirectory . "/{$slug}.md");
+        return File::exists(self::$publishedDirectory . "/{$slug}.md");
     }
 
     public static function asHtml($slug): string
@@ -25,7 +25,7 @@ class Blog
         );
 
         return $converter->convertToHtml(
-            File::get(SELF::$publishedDirectory . "/{$slug}.md")
+            File::get(self::$publishedDirectory . "/{$slug}.md")
         );
     }
 }
