@@ -12,7 +12,7 @@ class Blog
 
     public static function isPublished($slug): bool
     {
-        return File::exists(self::$publishedDirectory . "/{$slug}.md");
+        return File::exists(base_path(self::$publishedDirectory . "/{$slug}.md"));
     }
 
     public static function asHtml($slug): string
@@ -25,7 +25,7 @@ class Blog
         );
 
         return (string) $converter->convertToHtml(
-            File::get(self::$publishedDirectory . "/{$slug}.md")
+            File::get(base_path(self::$publishedDirectory . "/{$slug}.md"))
         );
     }
 }

@@ -18,13 +18,14 @@ class RoutesTest extends TestCase
     /** @test */
     public function it_returns_a_200_if_the_blog_exists()
     {
+        $this->withoutExceptionHandling();
         File::shouldReceive('exists')
             ->once()
-            ->with('resources/blogs/published/test.md')
+            ->with(base_path('resources/blogs/published/test.md'))
             ->andReturn(true);
         File::shouldReceive('get')
             ->once()
-            ->with('resources/blogs/published/test.md')
+            ->with(base_path('resources/blogs/published/test.md'))
             ->andReturn('test');
 
         $this->get('/blog/test')->assertOk();
@@ -33,9 +34,10 @@ class RoutesTest extends TestCase
     /** @test */
     public function it_returns_a_404_if_the_blog_does_not_exist()
     {
+        $this->withoutExceptionHandling();
         File::shouldReceive('exists')
             ->once()
-            ->with('resources/blogs/published/does-not-exist.md')
+            ->with(base_path('resources/blogs/published/does-not-exist.md'))
             ->andReturn(false);
 
         $this->get('/blog/does-not-exist')->assertStatus(404);
@@ -44,13 +46,14 @@ class RoutesTest extends TestCase
     /** @test */
     public function it_converts_md_to_html()
     {
+        $this->withoutExceptionHandling();
         File::shouldReceive('exists')
             ->once()
-            ->with('resources/blogs/published/published-post.md')
+            ->with(base_path('resources/blogs/published/published-post.md'))
             ->andReturn(true);
         File::shouldReceive('get')
             ->once()
-            ->with('resources/blogs/published/published-post.md')
+            ->with(base_path('resources/blogs/published/published-post.md'))
             ->andReturn('# Hello World!');
 
         $this->get('/blog/published-post')
