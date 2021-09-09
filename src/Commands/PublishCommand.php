@@ -3,9 +3,10 @@
 namespace Projektgopher\Scrawl\Commands;
 
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 use Projektgopher\Scrawl\Blog;
+use Projektgopher\Scrawl\Exceptions\BlogNotFoundException;
+use Projektgopher\Scrawl\Exceptions\BlogAlreadyExistsException;
 
 class PublishCommand extends Command
 {
@@ -22,9 +23,11 @@ class PublishCommand extends Command
 
         $this->comment($slug);
 
-        File::ensureDirectoryExists(Blog::$publishedDirectory);
+        try {
+            Blog::publish($slug);
+        }
 
-        if (File::missing(Blog::$unpublishedDirectory . "/{$slug}.md")) {
+        catch(BlogNotFoundException $e) {
             $this->warn(
                 "We couldn't find this file. Try again with a different name."
             );
@@ -32,18 +35,13 @@ class PublishCommand extends Command
             return;
         }
 
-        if (File::exists(Blog::$publishedDirectory . "/{$slug}.md")) {
+        catch(BlogAlreadyExistsException $e) {
             $this->warn(
                 'This file already exists. Try again with a different name.'
             );
 
             return;
         }
-
-        File::move(
-            Blog::$unpublishedDirectory . "/{$slug}.md",
-            Blog::$publishedDirectory . "/{$slug}.md"
-        );
 
         $this->comment("All done. Don't forget to commit, push, and deploy ;)");
     }
