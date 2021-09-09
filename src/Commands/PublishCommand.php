@@ -5,8 +5,8 @@ namespace Projektgopher\Scrawl\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Support\Str;
 use Projektgopher\Scrawl\Blog;
-use Projektgopher\Scrawl\Exceptions\BlogNotFoundException;
 use Projektgopher\Scrawl\Exceptions\BlogAlreadyExistsException;
+use Projektgopher\Scrawl\Exceptions\BlogNotFoundException;
 
 class PublishCommand extends Command
 {
@@ -25,17 +25,13 @@ class PublishCommand extends Command
 
         try {
             Blog::publish($slug);
-        }
-
-        catch(BlogNotFoundException $e) {
+        } catch (BlogNotFoundException $e) {
             $this->warn(
                 "We couldn't find this file. Try again with a different name."
             );
 
             return;
-        }
-
-        catch(BlogAlreadyExistsException $e) {
+        } catch (BlogAlreadyExistsException $e) {
             $this->warn(
                 'This file already exists. Try again with a different name.'
             );

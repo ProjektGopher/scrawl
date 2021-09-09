@@ -3,7 +3,6 @@
 namespace Projektgopher\Scrawl\Commands;
 
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 use Projektgopher\Scrawl\Blog;
 

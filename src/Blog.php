@@ -4,8 +4,8 @@ namespace Projektgopher\Scrawl;
 
 use Illuminate\Support\Facades\File;
 use League\CommonMark\GithubFlavoredMarkdownConverter;
-use Projektgopher\Scrawl\Exceptions\BlogNotFoundException;
 use Projektgopher\Scrawl\Exceptions\BlogAlreadyExistsException;
+use Projektgopher\Scrawl\Exceptions\BlogNotFoundException;
 
 class Blog
 {
@@ -57,11 +57,11 @@ class Blog
         File::ensureDirectoryExists(self::$publishedDirectory);
 
         if (File::missing(self::$unpublishedDirectory . "/{$slug}.md")) {
-            throw new BlogNotFoundException;
+            throw new BlogNotFoundException();
         }
 
         if (File::exists(self::$publishedDirectory . "/{$slug}.md")) {
-            throw new BlogAlreadyExistsException;
+            throw new BlogAlreadyExistsException();
         }
 
         File::move(
