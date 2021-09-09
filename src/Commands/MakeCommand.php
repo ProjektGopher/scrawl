@@ -19,20 +19,13 @@ class MakeCommand extends Command
             $this->argument('title') ?? $this->ask('What is the name of your blog post?')
         );
 
-        $this->comment($slug);
+        $this->comment("Sluggified title: {$slug}");
 
-        File::ensureDirectoryExists(Blog::$unpublishedDirectory);
-
-        if (File::exists(Blog::$unpublishedDirectory . "/{$slug}.md")) {
+        if (! Blog::createFromStubIfNotExists($slug)) {
             $this->warn('This file already exists. Try again with a different name.');
 
             return;
         }
-
-        $stub = File::get('vendor/projektgopher/scrawl/stubs/blog.md.stub');
-
-        // try/catch creating file from stub
-        File::put(Blog::$unpublishedDirectory . "/{$slug}.md", $stub);
 
         $this->comment('All done. Now get writing ;)');
     }

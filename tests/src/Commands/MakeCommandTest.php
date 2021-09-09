@@ -24,7 +24,7 @@ class MakeCommandTest extends TestCase
 
         $this->artisan('blog:make')
             ->expectsQuestion('What is the name of your blog post?', $title)
-            ->expectsOutput(Str::slug($title));
+            ->expectsOutput("Sluggified title: " . Str::slug($title));
     }
 
     /** @test */
@@ -35,7 +35,7 @@ class MakeCommandTest extends TestCase
         $title = 'Long blog title that has to be sluggified';
 
         $this->artisan("blog:make '{$title}'")
-            ->expectsOutput(Str::slug($title));
+            ->expectsOutput("Sluggified title: " . Str::slug($title));
     }
 
     /** @test */
@@ -59,7 +59,7 @@ class MakeCommandTest extends TestCase
         File::shouldReceive('ensureDirectoryExists');
         File::shouldReceive('exists')
             ->once()
-            ->with("resources/blogs/unpublished/{$slug}.md")
+            ->with(base_path("resources/blogs/unpublished/{$slug}.md"))
             ->andReturn(true);
 
         $this->artisan("blog:make '{$name}'")
@@ -75,7 +75,7 @@ class MakeCommandTest extends TestCase
         File::shouldReceive('ensureDirectoryExists');
         File::shouldReceive('exists')
             ->once()
-            ->with("resources/blogs/unpublished/{$slug}.md")
+            ->with(base_path("resources/blogs/unpublished/{$slug}.md"))
             ->andReturn(false);
         File::shouldReceive('get')
             ->once()
