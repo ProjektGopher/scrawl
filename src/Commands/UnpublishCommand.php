@@ -5,8 +5,8 @@ namespace Projektgopher\Scrawl\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Support\Str;
 use Projektgopher\Scrawl\Blog;
-use Projektgopher\Scrawl\Exceptions\BlogNotFoundException;
 use Projektgopher\Scrawl\Exceptions\BlogAlreadyExistsException;
+use Projektgopher\Scrawl\Exceptions\BlogNotFoundException;
 
 class UnpublishCommand extends Command
 {

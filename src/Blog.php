@@ -36,9 +36,10 @@ class Blog
         );
     }
 
-    public static function make($slug) {
+    public static function make($slug)
+    {
         if (! Blog::createFromStubIfNotExists($slug)) {
-            throw new BlogAlreadyExistsException;
+            throw new BlogAlreadyExistsException();
         }
     }
 
