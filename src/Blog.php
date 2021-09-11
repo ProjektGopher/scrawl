@@ -36,6 +36,12 @@ class Blog
         );
     }
 
+    public static function make($slug) {
+        if (! Blog::createFromStubIfNotExists($slug)) {
+            throw new BlogAlreadyExistsException;
+        }
+    }
+
     public static function createFromStubIfNotExists($slug): bool
     {
         if (self::isUnpublished($slug)) {
@@ -67,6 +73,24 @@ class Blog
         File::move(
             Blog::$unpublishedDirectory . "/{$slug}.md",
             Blog::$publishedDirectory . "/{$slug}.md"
+        );
+    }
+
+    public static function unpublish($slug): void
+    {
+        File::ensureDirectoryExists(self::$unpublishedDirectory);
+
+        if (File::missing(self::$publishedDirectory . "/{$slug}.md")) {
+            throw new BlogNotFoundException();
+        }
+
+        if (File::exists(self::$unpublishedDirectory . "/{$slug}.md")) {
+            throw new BlogAlreadyExistsException();
+        }
+
+        File::move(
+            Blog::$publishedDirectory . "/{$slug}.md",
+            Blog::$unpublishedDirectory . "/{$slug}.md"
         );
     }
 }
