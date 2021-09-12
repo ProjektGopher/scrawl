@@ -16,6 +16,12 @@ class MakeCommandTest extends TestCase
     }
 
     /** @test */
+    public function it_has_a_make_command_alias()
+    {
+        $this->assertTrue(Arr::has(Artisan::all(), 'make:blog'));
+    }
+
+    /** @test */
     public function it_sluggifies_a_title()
     {
         File::spy();

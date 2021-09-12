@@ -13,6 +13,12 @@ class MakeCommand extends Command
 
     public $description = 'create new blog file from string';
 
+    public function __construct()
+    {
+        parent::__construct();
+        $this->setAliases(['make:blog']);
+    }
+
     public function handle(): void
     {
         $slug = Str::slug(
