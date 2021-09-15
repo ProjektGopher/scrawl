@@ -4,6 +4,11 @@
 
 return [
 
+    /**
+     * These folders are located in the resources directory. We suggest
+     * storing them in a directory named md (markdown) to follow
+     * with the conventions of the resources directory.
+     */
     "unpublished_directory" => "md/scrawl/unpublished",
     "published_directory" => "md/scrawl/published",
 

@@ -28,6 +28,11 @@ This is the contents of the published config file:
 ```php
 return [
 
+    /**
+     * These folders are located in the resources directory. We suggest
+     * storing them in a directory named md (markdown) to follow
+     * with the conventions of the resources directory.
+     */
     "unpublished_directory" => "md/scrawl/unpublished",
     "published_directory" => "md/scrawl/published",
 
@@ -121,7 +126,7 @@ vendor/bin/phpunit --testdox
 
 ## Support us
 
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/laravel-blog.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/laravel-blog)
+[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/scrawl.jpg?t=1" width="419px" />](https://scrawl.projektgopher.com/github-ad-click)
 
 We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
 
