@@ -8,7 +8,11 @@ verb. To write in a hurried or careless way.
 [![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/projektgopher/scrawl/Check%20&%20fix%20styling?label=code%20style)](https://github.com/projektgopher/scrawl/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/projektgopher/scrawl.svg?style=flat-square)](https://packagist.org/packages/projektgopher/scrawl)
 
-Scrawl is designed to be the lowest barrier to entry markdown file based single user blogging solution for Laravel
+Scrawl is designed to be the lowest friction markdown file based single user blogging solution for Laravel
+
+## Documentation
+
+For the full documentation, visit the [Scrawl home page](https://scrawl.projektgopher.com/?ref=github).
 
 ## Installation
 
@@ -126,7 +130,7 @@ vendor/bin/phpunit --testdox
 
 ## Support us
 
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/scrawl.jpg?t=1" width="419px" />](https://scrawl.projektgopher.com/github-ad-click)
+[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/scrawl.jpg?t=1" width="419px" />](https://scrawl.projektgopher.com/?ref=github)
 
 We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
 
