@@ -1,7 +1,8 @@
-# Scrawl
+[<img src="https://raw.githubusercontent.com/ProjektGopher/scrawl/main/resources/img/scrawl.svg" width="1024px" />](https://scrawl.projektgopher.com/?ref=github)
+
 verb. To write in a hurried or careless way.
 
-## Just get writing.
+### Just get writing.
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/projektgopher/scrawl.svg?style=flat-square)](https://packagist.org/packages/projektgopher/scrawl)
 [![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/projektgopher/scrawl/run-tests?label=tests)](https://github.com/projektgopher/scrawl/actions?query=workflow%3Arun-tests+branch%3Amain)
@@ -129,8 +130,6 @@ vendor/bin/phpunit --testdox
 ```
 
 ## Support us
-
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/scrawl.jpg?t=1" width="419px" />](https://scrawl.projektgopher.com/?ref=github)
 
 We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
 
