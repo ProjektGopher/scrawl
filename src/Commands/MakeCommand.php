@@ -19,7 +19,7 @@ class MakeCommand extends Command
         $this->setAliases(['make:blog']);
     }
 
-    public function handle(): void
+    public function handle(): int
     {
         $slug = Str::slug(
             $this->argument('title')
@@ -33,9 +33,11 @@ class MakeCommand extends Command
         } catch (BlogAlreadyExistsException $e) {
             $this->warn('This file already exists. Try again with a different name.');
 
-            return;
+            return self::FAILURE;
         }
 
         $this->comment('All done. Now get writing ;)');
+
+        return self::SUCCESS;
     }
 }
