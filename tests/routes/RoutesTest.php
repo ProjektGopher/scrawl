@@ -28,6 +28,24 @@ class RoutesTest extends TestCase
             ->with(base_path('resources/blogs/published/test.md'))
             ->andReturn('test');
 
+        // This is all just to allow the view() helper to pass.
+        // There HAS to be a better way.
+        File::shouldReceive('exists')
+            ->once()
+            ->andReturn(true);
+        File::shouldReceive('lastModified')
+            ->once();
+        File::shouldReceive('get')
+            ->once();
+        File::shouldReceive('put')
+            ->once();
+        File::shouldReceive('getRequire')
+            ->once();
+        File::shouldReceive('exists')
+            ->once();
+        File::shouldReceive('exists')
+            ->once();
+
         $this->get('/blog/test')->assertOk();
     }
 
