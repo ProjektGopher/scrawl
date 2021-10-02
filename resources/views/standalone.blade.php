@@ -7,6 +7,6 @@
     <title>Blog Title</title>
 </head>
 <body>
-    {{ $body }}
+    {!! $body !!}
 </body>
 </html>

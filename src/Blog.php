@@ -9,6 +9,7 @@ use Projektgopher\Scrawl\Exceptions\BlogNotFoundException;
 
 class Blog
 {
+    public static $blogDirectory = "resources/blogs";
     public static $publishedDirectory = "resources/blogs/published";
     public static $unpublishedDirectory = "resources/blogs/unpublished";
 

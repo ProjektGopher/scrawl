@@ -4,6 +4,7 @@ namespace Projektgopher\Scrawl\Tests;
 
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
+use Projektgopher\Scrawl\Blog;
 
 class RoutesTest extends TestCase
 {
@@ -19,34 +20,19 @@ class RoutesTest extends TestCase
     public function it_returns_a_200_if_the_blog_exists()
     {
         $this->withoutExceptionHandling();
-        File::shouldReceive('exists')
-            ->once()
-            ->with(base_path('resources/blogs/published/test.md'))
-            ->andReturn(true);
-        File::shouldReceive('get')
-            ->once()
-            ->with(base_path('resources/blogs/published/test.md'))
-            ->andReturn('test');
 
-        // This is all just to allow the view() helper to pass.
-        // There HAS to be a better way.
-        File::shouldReceive('exists')
-            ->once()
-            ->andReturn(true);
-        File::shouldReceive('lastModified')
-            ->once();
-        File::shouldReceive('get')
-            ->once();
-        File::shouldReceive('put')
-            ->once();
-        File::shouldReceive('getRequire')
-            ->once();
-        File::shouldReceive('exists')
-            ->once();
-        File::shouldReceive('exists')
-            ->once();
+        // Arrange
+        File::ensureDirectoryExists(base_path(Blog::$publishedDirectory));
+        File::put(
+            base_path(Blog::$publishedDirectory . "/published-post.md"),
+            "# Hello World!"
+        );
 
-        $this->get('/blog/test')->assertOk();
+        // Act and Assert
+        $this->get('/blog/published-post')->assertOk();
+
+        // Cleanup
+        File::deleteDirectory(base_path(Blog::$blogDirectory));
     }
 
     /** @test */
@@ -65,18 +51,21 @@ class RoutesTest extends TestCase
     public function it_converts_md_to_html()
     {
         $this->withoutExceptionHandling();
-        File::shouldReceive('exists')
-            ->once()
-            ->with(base_path('resources/blogs/published/published-post.md'))
-            ->andReturn(true);
-        File::shouldReceive('get')
-            ->once()
-            ->with(base_path('resources/blogs/published/published-post.md'))
-            ->andReturn('# Hello World!');
 
+        // Arrange
+        File::ensureDirectoryExists(base_path(Blog::$publishedDirectory));
+        File::put(
+            base_path(Blog::$publishedDirectory . "/published-post.md"),
+            "# Hello World!"
+        );
+
+        // Act and Assert
         $this->get('/blog/published-post')
             ->assertOk()
             ->assertSee(value: '<h1>Hello World!</h1>', escape: false);
+
+        // Cleanup
+        File::deleteDirectory(base_path(Blog::$blogDirectory));
     }
 
     // it has named routes
