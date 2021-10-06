@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 use Projektgopher\Scrawl\Blog;
 use Projektgopher\Scrawl\Exceptions\NotImplementedException;
 
-Route::get('blog/{slug}', function ($slug) {
+Route::get(config('scrawl.route_group') . '/{slug}', function ($slug) {
     if (! Blog::isPublished($slug)) {
         abort(404, 'We couldn\'t find this post.');
     }
