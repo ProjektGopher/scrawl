@@ -4,9 +4,6 @@ namespace Projektgopher\Scrawl\Tests;
 
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
-use Projektgopher\Scrawl\Blog;
-
-use function Symfony\Component\String\b;
 
 class RoutesTest extends TestCase
 {
