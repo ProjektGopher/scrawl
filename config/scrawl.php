@@ -9,10 +9,11 @@ return [
      * storing them in a directory named md (markdown) to follow
      * with the conventions of the resources directory.
      */
-    "blog_directory" => "md/scrawl",
-    "published_directory" => "md/scrawl/published",
     "unpublished_directory" => "md/scrawl/unpublished",
+    "published_directory" => "md/scrawl/published",
+    "blog_directory" => "md/scrawl",
 
+    "author_bio" => "",
     "author_name" => "",
     "author_link" => "",
     "author_photo" => "",

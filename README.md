@@ -40,7 +40,9 @@ return [
      */
     "unpublished_directory" => "md/scrawl/unpublished",
     "published_directory" => "md/scrawl/published",
+    "blog_directory" => "md/scrawl",
 
+    "author_bio" => "",
     "author_name" => "",
     "author_link" => "",
     "author_photo" => "",
@@ -94,6 +96,7 @@ return [
     ],
 
 ];
+
 ```
 
 ## Usage
