@@ -9,18 +9,33 @@ use Projektgopher\Scrawl\Exceptions\BlogNotFoundException;
 
 class Blog
 {
-    public static $blogDirectory = "resources/blogs";
-    public static $publishedDirectory = "resources/blogs/published";
-    public static $unpublishedDirectory = "resources/blogs/unpublished";
+    public static function path(?string $path = null): string
+    {
+        return resource_path(config('scrawl.blog_directory') . ($path ? "/{$path}" : ""));
+    }
+
+    public static function published_path(?string $path = null): string
+    {
+        return resource_path(config('scrawl.published_directory') . ($path ? "/{$path}" : ""));
+    }
+
+    public static function unpublished_path(?string $path = null): string
+    {
+        return resource_path(config('scrawl.unpublished_directory') . ($path ? "/{$path}" : ""));
+    }
 
     public static function isPublished($slug): bool
     {
-        return File::exists(base_path(self::$publishedDirectory . "/{$slug}.md"));
+        return (bool) File::exists(
+            resource_path(config('scrawl.published_directory') . "/{$slug}.md")
+        );
     }
 
     public static function isUnpublished($slug): bool
     {
-        return (bool) File::exists(base_path(self::$unpublishedDirectory . "/{$slug}.md"));
+        return (bool) File::exists(
+            resource_path(config('scrawl.unpublished_directory') . "/{$slug}.md")
+        );
     }
 
     public static function asHtml($slug): string
@@ -33,7 +48,9 @@ class Blog
         );
 
         return (string) $converter->convertToHtml(
-            File::get(base_path(self::$publishedDirectory . "/{$slug}.md"))
+            File::get(
+                resource_path(config('scrawl.published_directory') . "/{$slug}.md")
+            )
         );
     }
 
@@ -50,9 +67,11 @@ class Blog
             return false;
         }
 
-        File::ensureDirectoryExists(self::$unpublishedDirectory);
+        File::ensureDirectoryExists(
+            resource_path(config('scrawl.unpublished_directory'))
+        );
         File::put(
-            self::$unpublishedDirectory . "/{$slug}.md",
+            resource_path(config('scrawl.unpublished_directory') . "/{$slug}.md"),
             // TODO: not sure if I should change how following file is referenced.
             File::get('vendor/projektgopher/scrawl/stubs/blog.md.stub')
         );
@@ -62,37 +81,49 @@ class Blog
 
     public static function publish($slug): void
     {
-        File::ensureDirectoryExists(self::$publishedDirectory);
+        File::ensureDirectoryExists(
+            resource_path(config('scrawl.published_directory'))
+        );
 
-        if (File::missing(self::$unpublishedDirectory . "/{$slug}.md")) {
+        if (File::missing(
+            resource_path(config('scrawl.unpublished_directory') . "/{$slug}.md")
+        )) {
             throw new BlogNotFoundException();
         }
 
-        if (File::exists(self::$publishedDirectory . "/{$slug}.md")) {
+        if (File::exists(
+            resource_path(config('scrawl.published_directory') . "/{$slug}.md")
+        )) {
             throw new BlogAlreadyExistsException();
         }
 
         File::move(
-            Blog::$unpublishedDirectory . "/{$slug}.md",
-            Blog::$publishedDirectory . "/{$slug}.md"
+            resource_path(config('scrawl.unpublished_directory') . "/{$slug}.md"),
+            resource_path(config('scrawl.published_directory') . "/{$slug}.md")
         );
     }
 
     public static function unpublish($slug): void
     {
-        File::ensureDirectoryExists(self::$unpublishedDirectory);
+        File::ensureDirectoryExists(
+            resource_path(config('scrawl.unpublished_directory'))
+        );
 
-        if (File::missing(self::$publishedDirectory . "/{$slug}.md")) {
+        if (File::missing(
+            resource_path(config('scrawl.published_directory') . "/{$slug}.md")
+        )) {
             throw new BlogNotFoundException();
         }
 
-        if (File::exists(self::$unpublishedDirectory . "/{$slug}.md")) {
+        if (File::exists(
+            resource_path(config('scrawl.unpublished_directory') . "/{$slug}.md")
+        )) {
             throw new BlogAlreadyExistsException();
         }
 
         File::move(
-            Blog::$publishedDirectory . "/{$slug}.md",
-            Blog::$unpublishedDirectory . "/{$slug}.md"
+            resource_path(config('scrawl.published_directory') . "/{$slug}.md"),
+            resource_path(config('scrawl.unpublished_directory') . "/{$slug}.md")
         );
     }
 }

@@ -6,6 +6,7 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
+use Projektgopher\Scrawl\Blog;
 
 class PublishCommandTest extends TestCase
 {
@@ -34,7 +35,7 @@ class PublishCommandTest extends TestCase
         $this->artisan('blog:publish blargh');
 
         File::shouldHaveReceived('ensureDirectoryExists')
-            ->with('resources/blogs/published')
+            ->with(Blog::published_path())
             ->once();
     }
 
@@ -47,10 +48,10 @@ class PublishCommandTest extends TestCase
         File::shouldReceive('ensureDirectoryExists');
         File::shouldReceive('missing')
             ->once()
-            ->with("resources/blogs/unpublished/{$slug}.md")
+            ->with(Blog::unpublished_path("{$slug}.md"))
             ->andReturn(false);
         File::shouldReceive('exists')
-            ->with("resources/blogs/published/{$slug}.md")
+            ->with(Blog::published_path("{$slug}.md"))
             ->once()
             ->andReturn(true);
 
@@ -67,17 +68,17 @@ class PublishCommandTest extends TestCase
         File::shouldReceive('ensureDirectoryExists');
         File::shouldReceive('missing')
             ->once()
-            ->with("resources/blogs/unpublished/{$slug}.md")
+            ->with(Blog::unpublished_path("{$slug}.md"))
             ->andReturn(false);
         File::shouldReceive('exists')
             ->once()
-            ->with("resources/blogs/published/{$slug}.md")
+            ->with(Blog::published_path("{$slug}.md"))
             ->andReturn(false);
         File::shouldReceive('move')
             ->once()
             ->with(
-                "resources/blogs/unpublished/{$slug}.md",
-                "resources/blogs/published/{$slug}.md"
+                Blog::unpublished_path("{$slug}.md"),
+                Blog::published_path("{$slug}.md")
             );
 
         $this->artisan("blog:publish '{$name}'")

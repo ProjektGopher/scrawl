@@ -9,8 +9,9 @@ return [
      * storing them in a directory named md (markdown) to follow
      * with the conventions of the resources directory.
      */
-    "unpublished_directory" => "md/scrawl/unpublished",
+    "blog_directory" => "md/scrawl",
     "published_directory" => "md/scrawl/published",
+    "unpublished_directory" => "md/scrawl/unpublished",
 
     "author_name" => "",
     "author_link" => "",

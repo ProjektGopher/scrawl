@@ -15,7 +15,7 @@ Route::get('blog/{slug}', function ($slug) {
         return view('scrawl::standalone', ['body' => Blog::asHtml($slug)]);
     }
 
-    // "none" => "",
+    // "none" => "", // return json
     // "custom" => "",
     // "x-component" => [
     //     "component" => "layouts.app",

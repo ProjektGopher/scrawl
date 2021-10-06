@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
 use Projektgopher\Scrawl\Blog;
 
+use function Symfony\Component\String\b;
+
 class RoutesTest extends TestCase
 {
     /** @test */
@@ -20,9 +22,11 @@ class RoutesTest extends TestCase
     public function it_returns_a_200_if_the_blog_exists()
     {
         // Arrange
-        File::ensureDirectoryExists(base_path(Blog::$publishedDirectory));
+        File::ensureDirectoryExists(
+            resource_path(config('scrawl.published_directory'))
+        );
         File::put(
-            base_path(Blog::$publishedDirectory . "/published-post.md"),
+            resource_path(config('scrawl.published_directory') . "/published-post.md"),
             "# Hello World!"
         );
 
@@ -30,7 +34,9 @@ class RoutesTest extends TestCase
         $this->get('/blog/published-post')->assertOk();
 
         // Cleanup
-        File::deleteDirectory(base_path(Blog::$blogDirectory));
+        File::deleteDirectory(
+            resource_path(config('scrawl.blog_directory'))
+        );
     }
 
     /** @test */
@@ -48,9 +54,11 @@ class RoutesTest extends TestCase
     public function it_converts_md_to_html()
     {
         // Arrange
-        File::ensureDirectoryExists(base_path(Blog::$publishedDirectory));
+        File::ensureDirectoryExists(
+            resource_path(config('scrawl.published_directory'))
+        );
         File::put(
-            base_path(Blog::$publishedDirectory . "/published-post.md"),
+            resource_path(config('scrawl.published_directory') . "/published-post.md"),
             "# Hello World!"
         );
 
@@ -60,7 +68,9 @@ class RoutesTest extends TestCase
             ->assertSee(value: '<h1>Hello World!</h1>', escape: false);
 
         // Cleanup
-        File::deleteDirectory(base_path(Blog::$blogDirectory));
+        File::deleteDirectory(
+            resource_path(config('scrawl.blog'))
+        );
     }
 
     // it has named routes

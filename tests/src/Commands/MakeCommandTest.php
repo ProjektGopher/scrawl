@@ -6,6 +6,7 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
+use Projektgopher\Scrawl\Blog;
 
 class MakeCommandTest extends TestCase
 {
@@ -53,7 +54,7 @@ class MakeCommandTest extends TestCase
 
         File::shouldHaveReceived('ensureDirectoryExists')
             ->once()
-            ->with('resources/blogs/unpublished');
+            ->with(Blog::unpublished_path());
     }
 
     /** @test */
@@ -65,7 +66,7 @@ class MakeCommandTest extends TestCase
         File::shouldReceive('ensureDirectoryExists');
         File::shouldReceive('exists')
             ->once()
-            ->with(base_path("resources/blogs/unpublished/{$slug}.md"))
+            ->with(Blog::unpublished_path("{$slug}.md"))
             ->andReturn(true);
 
         $this->artisan("blog:make '{$name}'")
@@ -81,7 +82,7 @@ class MakeCommandTest extends TestCase
         File::shouldReceive('ensureDirectoryExists');
         File::shouldReceive('exists')
             ->once()
-            ->with(base_path("resources/blogs/unpublished/{$slug}.md"))
+            ->with(Blog::unpublished_path("{$slug}.md"))
             ->andReturn(false);
         File::shouldReceive('get')
             ->once()
@@ -89,7 +90,7 @@ class MakeCommandTest extends TestCase
             ->andReturn('stub');
         File::shouldReceive('put')
             ->once()
-            ->with("resources/blogs/unpublished/{$slug}.md", 'stub');
+            ->with(Blog::unpublished_path("{$slug}.md"), 'stub');
 
         $this->artisan("blog:make '{$name}'")
             ->expectsOutput('All done. Now get writing ;)');
